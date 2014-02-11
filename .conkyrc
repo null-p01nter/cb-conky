@@ -1,0 +1,104 @@
+#!/usr/bin/conky -d -c
+##	.conkyrc configuration
+alignment bottom_left
+background yes
+border_margin 5
+border_width 5
+color0 555555			
+color1 FCAF3E			
+color2 2a2a2a			
+color3 a82553			
+color4 5e1014			
+color5 64574e			
+color6 2a2a2a			
+color7 8888CC			
+color8 9d9c61			
+color9 525276			
+cpu_avg_samples 2
+default_color 000000		
+default_outline_color 000000 	
+default_shade_color 000000	
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 1155
+gap_y 140
+max_specials 1024
+max_user_text 10000
+maximum_width 200
+minimum_size 175
+net_avg_samples 2
+no_buffers yes
+override_utf8_locale yes
+own_window yes
+own_window_colour 000000	
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type normal 	
+pad_percents 2			
+short_units yes			
+stippled_borders 3
+text_buffer_size 8000
+total_run_times 0
+update_interval 1.0
+uppercase no
+use_spacer right
+use_xft yes
+xftalpha 1
+xftfont Freesans:pixelsize=9
+
+lua_load /home/didisoft/.conky/lua.lua
+
+TEXT
+${font Zegoe UI:size=8}${color #ffd800}SYSTEM
+${font pftempestafivecondensed:size=6}${color #ffffff}${time  %B %d, %Y}
+${font pftempestafivecondensed:size=6}${color #ffffff}Uptime: $uptime_short
+
+${font Zegoe UI:size=8}${color #ffd800}BATTERY
+${font pftempestafivecondensed:size=6}${color #ffffff}${battery_bar BAT0 4,200}
+${font pftempestafivecondensed:size=6}${color #ffffff}Power: ${battery_percent BAT0}%
+
+${font Zegoe UI:size=8}${color #ffd800}MEMORY${font pftempestafivecondensed:size=6}${color #ffffff}
+${membar 4,200}
+Used: ${mem} ${alignr} Free: ${memfree}
+
+1. ${top_mem name 1}${alignr}${top_mem cpu 1} ${top_mem mem_res 1}
+2. ${top_mem name 2}${alignr}${top_mem cpu 2} ${top_mem mem_res 2}
+3. ${top_mem name 3}${alignr}${top_mem cpu 3} ${top_mem mem_res 3}
+4. ${top_mem name 4}${alignr}${top_mem cpu 4} ${top_mem mem_res 4}
+5. ${top_mem name 5}${alignr}${top_mem cpu 5} ${top_mem mem_res 5}
+
+${font Zegoe UI:size=8}${color #ffd800}CPU${font pftempestafivecondensed:size=6}${color #ffffff}
+${cpubar cpu1 4,200} 
+${cpugraph cpu1 12,200}
+1. ${top name 1}${alignr}${top cpu 1}  ${top mem_res 1}
+2. ${top name 2}${alignr}${top cpu 2}  ${top mem_res 2}
+3. ${top name 3}${alignr}${top cpu 3}  ${top mem_res 3}
+4. ${top name 4}${alignr}${top cpu 4}  ${top mem_res 4}
+5. ${top name 5}${alignr}${top cpu 5}  ${top mem_res 5}
+
+${font Zegoe UI:size=8}${color #ffd800}FILE SYSTEM${font pftempestafivecondensed:size=6}${color #ffffff}
+${fs_bar 4,200 /} 
+Used: ${fs_used} ${alignr} Free: ${fs_free}
+
+${font Zegoe UI:size=8}${color #ffd800}NETWORK${font pftempestafivecondensed:size=6}${color #ffffff}
+Download Speed: ${alignr}${downspeedf}KB/s
+Upload Speed: ${alignr}${upspeedf}KB/s
+
+${font Zegoe UI:size=8}${color #ffd800}WEATHER
+${font pftempestafivecondensed:size=6}${color #ffffff}${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=2499253&u=f" -o ~/.cache/weather.xml}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | tr '[a-z]' '[A-Z]'}, ${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°
+
+${font Zegoe UI:size=8}${color #ffd800}NEWS - ${rss http://feeds.bbci.co.uk/news/rss.xml 4 feed_title}${font pftempestafivecondensed:size=6}${color #ffffff}
+1. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 1}
+2. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 2}
+3. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 3}
+4. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 4}
+5. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 5}
+6. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 6}
+7. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 7}
+8. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 8}
+9. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 9}
+10. ${rss http://feeds.bbci.co.uk/news/rss.xml 4 item_title 10}
+
